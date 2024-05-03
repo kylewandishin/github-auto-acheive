@@ -1,9 +1,9 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "module": "CommonJS",
-        "outDir": "./lib/cjs",
-        "removeComments": false
-    },
-    "exclude": ["scripts", "docs"]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "outDir": "./lib/cjs",
+    "removeComments": false
+  },
+  "exclude": ["scripts", "docs"]
 }
