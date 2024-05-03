@@ -7,11 +7,7 @@ import { parseError } from './Error';
   const githubClient = new GithubClient(args.includes('--debug') || args.includes('-d'));
   await githubClient.init();
   await githubClient.login();
-  await githubClient.createBlankRepo();
-  await githubClient.quickDraw();
-  // await githubClient.galaxyBrain(); [Not Ready]
-  await githubClient.runAllPRs();
-  // await githubClient.deleteRepo();
+  await githubClient.deleteRepo();
   await githubClient.close();
 })().catch((err) => {
   parseError(err);

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "main": "tsx scripts/main.ts",
+    "clear": "tsx scripts/clear.ts",
     "prepare": "husky install",
     "pretty": "prettier --config .prettierrc --write .",
     "lint": "eslint . --fix",
