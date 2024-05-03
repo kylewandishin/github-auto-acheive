@@ -8,7 +8,9 @@ import { parseError } from './Error';
   await githubClient.init();
   await githubClient.login();
   await githubClient.createBlankRepo();
-  //   await githubClient.runAll();
+  await githubClient.quickDraw();
+  await githubClient.galaxyBrain();
+  await githubClient.runAllPRs();
   await githubClient.deleteRepo();
   await githubClient.close();
 })().catch((err) => {

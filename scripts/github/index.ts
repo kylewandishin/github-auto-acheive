@@ -7,6 +7,7 @@ export class GithubClient {
   #GIT_PASS: string;
 
   #debug: boolean;
+  #numPRs = 1024;  
   #browser: PlaywrightBrowser;
 
   public constructor(debug = false) {
@@ -44,10 +45,8 @@ export class GithubClient {
     }
   }
 
-  public async init(): Promise<void> {
-    this.log('Opening browser');
-    await this.#browser.open();
-    this.log('Browser opened');
+  public async init(): Promise<void> {  
+   await this.#browser.open();  
   }
 
   public async login(): Promise<void> {
@@ -78,7 +77,7 @@ export class GithubClient {
         'h1F4i4e8A4'
       );
 
-      await sleep(1000);
+      await sleep(2000);
 
       await this.#browser.page.click('div.Box-sc-g0xbh4-0:nth-child(6) button');
 
@@ -88,6 +87,7 @@ export class GithubClient {
 
   public async deleteRepo(): Promise<void> {
     this.log('Deleting repo');
+    await sleep(1000);
     await this.#browser.page.goto(`https://github.com/${this.#GIT_USER}/h1F4i4e8A4/settings`);
     await this.#browser.page.click('#dialog-show-repo-delete-menu-dialog > span > span');
     await this.#browser.page.click('#repo-delete-proceed-button');
@@ -97,15 +97,69 @@ export class GithubClient {
     this.log('Deleted repo');
   }
 
-  public async runAll(): Promise<void> {
-    await new Promise((resolve) => setTimeout(resolve, 50000));
+
+  public async runAllPRs(): Promise<void> {
+    this.log('Running all PRs');
+    for (let i = 0; i < this.#numPRs; i++) {
+      this.log(`Creating PR ${i + 1}`);
+      await sleep(1000);
+      await this.#browser.page.goto(`https://github.com/${this.#GIT_USER}/h1F4i4e8A4`);
+      await this.#browser.page.click('.iGmlUb > div > button');
+      const element = await this.#browser.page.waitForSelector('.cm-content');
+      await this.#browser.page.fill('.cm-content', `${await element?.innerText()}hai:3`);
+      await this.#browser.page.click('.cnECWi > button');
+      await this.#browser.page.click('div.hnmzXm:nth-child(2) > div:nth-child(1) > input');
+      await this.#browser.page.click('.gPkVNE > button:nth-child(2)');
+      await this.#browser.page.click('div.BtnGroup > button');
+      await sleep(4000);
+      await this.#browser.page.click('.merge-message > div:nth-child(1) > div:nth-child(1) > button');
+      await this.#browser.page.click('div.BtnGroup:nth-child(2) > button');
+      await sleep(4000);
+      await this.#browser.page.click('.post-merge-message > button');
+    }
+    this.log('All PRs complete');
+  }
+
+  public async quickDraw(): Promise<void> {
+    this.log('Quick drawing');
+    await sleep(1000);
+    await this.#browser.page.goto(`https://github.com/kylewandishin/h1F4i4e8A4/issues/new`);
+    await this.#browser.page.fill('#new_issue > div > div > div.Layout-main > div > div:nth-child(2) > div > div.mb-3 > text-expander > input', 'hai:3');
+    await sleep(1000);
+    await this.#browser.page.click('div.flex-items-center:nth-child(7) > button');
+    await sleep(1000);
+    await this.#browser.page.click('#partial-new-comment-form-actions > div.d-flex.flex-justify-end > div:nth-child(1) > close-reason-selector > div > button');
+    this.log('Quick draw complete');
+  }
+
+  public async galaxyBrain(): Promise<void> {
+    this.log('Galaxy braining - [Not Ready]');
+    await sleep(1);
+    // for (let i = 0; i < 2; i++) {
+    // await sleep(1000);
+    // await this.#browser.page.goto(`https://github.com/${this.#GIT_USER}/h1F4i4e8A4/discussions/new?category=q-a`)
+    // await this.#browser.page.fill('#js-discussion-title', 'hai:3');
+    // await this.#browser.page.fill('#discussion_body', 'hai:3');
+    // await this.#browser.page.click('#new_discussion > div > div.Layout-main > div > div:nth-child(3) > div.js-slash-command-surface > div.flex-items-center.flex-justify-end.d-md-flex.my-3 > button');
+    // await sleep(1000);
+
+    // await this.#browser.page.fill("#new_comment_field", "hai:3");
+    // await this.#browser.page.click('.js-comment-and-button');
+    // await sleep(1000);
+    // await this.#browser.page.click('button.social-reaction-summary-item:nth-child(2)');
+    // }
+    this.log('Galaxy brain complete - [Not Ready]');
   }
 
   public async open(): Promise<void> {
+    this.log('Opening browser');
     await this.#browser.open();
+    this.log('Browser opened');
   }
 
   public async close(): Promise<void> {
+    this.log('Closing browser');
     await this.#browser.close();
+    this.log('Browser closed');
   }
 }
