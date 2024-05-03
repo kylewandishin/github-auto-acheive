@@ -3,4 +3,4 @@ dist
 lib
 types
 .env
-.eslintcaches
+.eslintcache
