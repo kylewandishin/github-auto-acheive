@@ -1,0 +1,61 @@
+{
+    "name": "github-auto-achieve",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "main": "tsx scripts/main.tsx",
+        "prepare": "husky install",
+        "pretty": "prettier --write .",
+        "lint": "eslint . --fix --cache",
+        "vitest": "vitest",
+        "test": "npm run lint && npm run vitest -- --run",
+        "build": "rm -rf lib && npm run compile",
+        "build:json": "node scripts/build-json.js",
+        "compile": "npm-run-all --parallel tsc:esm tsc:cjs",
+        "tsc:esm": "tsc -p tsconfig.json",
+        "tsc:cjs": "tsc -p tsconfig-cjs.json"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "tsx": "^4.8.2",
+        "typescript": "^5.4.5",
+        "vitest": "^1.5.3"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^7.8.0",
+        "@typescript-eslint/parser": "^7.8.0",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-tsdoc": "^0.2.17",
+        "husky": "^9.0.11",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kylewandishin/github-auto-achieve.git"
+    },
+    "bugs": {
+        "url": "https://github.com/kylewandishin/github-auto-achieve/issues"
+    },
+    "homepage": "https://github.com/kylewandishin/github-auto-achieve#readme",
+    "prettier": {
+        "plugins": [
+            "prettier-plugin-organize-imports"
+        ]
+    },
+    "lint-staged": {
+        "*.{js,json,ts}": [
+            "prettier --write",
+            "git add"
+        ],
+        "*.md": [
+            "markdown-toc -i",
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
