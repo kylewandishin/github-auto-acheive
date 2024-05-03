@@ -12,13 +12,13 @@ export class PlaywrightBrowser {
     this.page = null as unknown as Page;
   }
 
-  public async open() {
+  public async open(): Promise<void> {
     this.#browser = await firefox.launch({ headless: false });
     this.#context = await this.#browser.newContext();
     this.page = await this.#context.newPage();
   }
 
-  public async close() {
+  public async close(): Promise<void> {
     return this.#browser?.close();
   }
 
