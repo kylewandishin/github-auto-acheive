@@ -7,7 +7,7 @@ export class GithubClient {
   #GIT_PASS: string;
 
   #debug: boolean;
-  #numPRs = 1024;  
+  #numPRs = 1024;
   #browser: PlaywrightBrowser;
 
   public constructor(debug = false) {
@@ -45,8 +45,8 @@ export class GithubClient {
     }
   }
 
-  public async init(): Promise<void> {  
-   await this.#browser.open();  
+  public async init(): Promise<void> {
+    await this.#browser.open();
   }
 
   public async login(): Promise<void> {
@@ -97,7 +97,6 @@ export class GithubClient {
     this.log('Deleted repo');
   }
 
-
   public async runAllPRs(): Promise<void> {
     this.log('Running all PRs');
     for (let i = 0; i < this.#numPRs; i++) {
@@ -112,7 +111,9 @@ export class GithubClient {
       await this.#browser.page.click('.gPkVNE > button:nth-child(2)');
       await this.#browser.page.click('div.BtnGroup > button');
       await sleep(4000);
-      await this.#browser.page.click('.merge-message > div:nth-child(1) > div:nth-child(1) > button');
+      await this.#browser.page.click(
+        '.merge-message > div:nth-child(1) > div:nth-child(1) > button'
+      );
       await this.#browser.page.click('div.BtnGroup:nth-child(2) > button');
       await sleep(4000);
       await this.#browser.page.click('.post-merge-message > button');
@@ -124,11 +125,16 @@ export class GithubClient {
     this.log('Quick drawing');
     await sleep(1000);
     await this.#browser.page.goto(`https://github.com/kylewandishin/h1F4i4e8A4/issues/new`);
-    await this.#browser.page.fill('#new_issue > div > div > div.Layout-main > div > div:nth-child(2) > div > div.mb-3 > text-expander > input', 'hai:3');
+    await this.#browser.page.fill(
+      '#new_issue > div > div > div.Layout-main > div > div:nth-child(2) > div > div.mb-3 > text-expander > input',
+      'hai:3'
+    );
     await sleep(1000);
     await this.#browser.page.click('div.flex-items-center:nth-child(7) > button');
     await sleep(1000);
-    await this.#browser.page.click('#partial-new-comment-form-actions > div.d-flex.flex-justify-end > div:nth-child(1) > close-reason-selector > div > button');
+    await this.#browser.page.click(
+      '#partial-new-comment-form-actions > div.d-flex.flex-justify-end > div:nth-child(1) > close-reason-selector > div > button'
+    );
     this.log('Quick draw complete');
   }
 
