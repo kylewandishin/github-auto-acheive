@@ -6,7 +6,7 @@
   "scripts": {
     "main": "tsx scripts/main.tsx",
     "prepare": "husky install",
-    "pretty": "prettier --write .",
+    "pretty": "prettier --config .prettierrc --write .",
     "lint": "eslint . --fix --cache",
     "vitest": "vitest",
     "test": "npm run lint && npm run vitest -- --run",
