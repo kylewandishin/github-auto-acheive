@@ -9,7 +9,7 @@
     "pretty": "prettier --config .prettierrc --write .",
     "lint": "eslint . --fix",
     "vitest": "vitest",
-    "test": "npm run lint && npm run vitest -- --run",
+    "test": "npm run lint && npm run pretty && npm run vitest -- --run",
     "build": "rm -rf lib && npm run compile",
     "build:json": "node scripts/build-json.js",
     "compile": "npm-run-all --parallel tsc:esm tsc:cjs",
