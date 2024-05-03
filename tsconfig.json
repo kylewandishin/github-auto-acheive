@@ -1,17 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "strict": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./lib/esm",
-    "declaration": true,
-    "removeComments": true,
-    "skipLibCheck": true,
-    "resolveJsonModule": true
-  },
-  "types": ["node"],
-  "exclude": []
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./lib/esm",
+        "declaration": true,
+        "removeComments": true,
+        "skipLibCheck": true,
+        "resolveJsonModule": true
+    },
+    "types": ["node"],
+    "exclude": []
 }
