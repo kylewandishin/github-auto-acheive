@@ -19,11 +19,6 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "dependencies": {
-        "tsx": "^4.8.2",
-        "typescript": "^5.4.5",
-        "vitest": "^1.5.3"
-    },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^7.8.0",
         "@typescript-eslint/parser": "^7.8.0",
@@ -32,7 +27,14 @@
         "eslint-plugin-tsdoc": "^0.2.17",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.2",
-        "prettier": "^3.2.5"
+        "prettier": "^3.2.5",
+        "prettier-plugin-organize-imports": "^3.2.4",
+        "rollup": "^4.17.2",
+        "tsx": "^4.8.2",
+        "typescript": "^5.4.5",
+        "typescript-eslint": "^7.8.0",
+        "vitest": "^1.5.3",
+        "zod": "^3.23.6"
     },
     "repository": {
         "type": "git",
@@ -48,14 +50,6 @@
         ]
     },
     "lint-staged": {
-        "*.{js,json,ts}": [
-            "prettier --write",
-            "git add"
-        ],
-        "*.md": [
-            "markdown-toc -i",
-            "prettier --write",
-            "git add"
-        ]
+        "*": "prettier -u --write"
     }
 }
